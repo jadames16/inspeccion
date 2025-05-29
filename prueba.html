@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Informe de Huella de Carbono Individual</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e5f3de;
+    color: #333;
+    margin: 0;
+    padding: 40px;
+  }
+
+  h1, h2 {
+    color: #214c3e;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #e0f2f1;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+
+  input[type="number"], input[type="text"], input {
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #214c3e;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #214c3e;
+    border-left: 4px solid #26a69a;
+    padding-left: 10px;
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #004d40;
+  }
+
+  .volver {
+    background-color: #214c3e;
+  }
+
+  #resultado, #informe {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #000000;
+    white-space: pre-wrap;
+  }
+
+  #informe {
+    display: none;
+  }
+</style>
+
+</head>
+<body>
+
+  <h1>Informe de Huella de Carbono – Nivel Individual</h1>
+
+  <div class="input-group">
+    <label for="nombre">Nombre del colaborador/a:</label><br>
+    <input type="text" id="nombre" placeholder="Ej. Johanna Pérez" />
+  </div>
+
+  <div class="input-group">
+    <label for="cargo">Cargo:</label><br>
+    <input type="text" id="cargo" placeholder="Ej. Analista de Ciberseguridad" />
+  </div>
+
+  <button onclick="generarInforme()">Generar Informe</button>
+
+
+
+  <div id="informe"></div>
+
+  <script>
+    function generarInforme() {
+      const nombre = document.getElementById("nombre").value;
+      const cargo = document.getElementById("cargo").value;
+
+      if (!nombre || !cargo) {
+        alert("Por favor completa tu nombre y cargo.");
+        return;
+      }
+
+      const informeHTML = `
+        <section>
+          <p><strong>Empresa:</strong> Neosecure Colombia S.A.S.<br>
+          <strong>Nombre del colaborador/a:</strong> ${nombre}<br>
+          <strong>Cargo:</strong> ${cargo}<br>
+          <strong>Modalidad:</strong> Trabajo remoto<br>
+          <strong>Año de referencia:</strong> 2024<br>
+          <strong>Fecha de emisión:</strong> 27 de mayo de 2025</p>
+        </section>
+
+        <section>
+          <h2>1. Introducción</h2>
+          <p>Este informe presenta la estimación de la huella de carbono generada por las actividades laborales individuales de ${nombre} durante el año 2024, bajo el esquema de trabajo remoto.</p>
+        </section>
+
+        <section>
+          <h2>2. Resultados de emisiones individuales</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Fuente de Emisión</th>
+                <th>Alcance</th>
+                <th>Actividad estimada</th>
+                <th>Emisiones (tCO₂e)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Consumo eléctrico (teletrabajo)</td><td>Alcance 2</td><td>180 kWh/año</td><td>0.06</td></tr>
+              <tr><td>Internet y servicios digitales</td><td>Alcance 3</td><td>4 h/día, 5 d/semana</td><td>0.10</td></tr>
+              <tr><td>Almacenamiento en la nube</td><td>Alcance 3</td><td>50 GB promedio</td><td>0.03</td></tr>
+              <tr><td>Transporte ocasional</td><td>Alcance 3</td><td>10 viajes (urbano)</td><td>0.04</td></tr>
+              <tr><td>Compra de laptop (⅓ anual)</td><td>Alcance 3</td><td>1 laptop</td><td>0.12</td></tr>
+              <tr><th colspan="3">Total estimado anual por colaborador/a</th><th>0.35 tCO₂e</th></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>3. Recomendaciones</h2>
+          <ul>
+            <li>Reducir el consumo eléctrico con equipos eficientes.</li>
+            <li>Desconectar dispositivos en desuso.</li>
+            <li>Optimizar el uso de almacenamiento en la nube.</li>
+            <li>Participar en programas de compensación de carbono.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Conclusión</h2>
+          <p>${nombre} presenta una huella de carbono moderada, propia del entorno remoto. Existen oportunidades claras para reducir aún más su impacto ambiental con pequeñas acciones cotidianas.</p>
+        </section>
+      `;
+
+      const divInforme = document.getElementById("informe");
+      divInforme.innerHTML = informeHTML;
+      divInforme.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
